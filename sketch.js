@@ -5,10 +5,9 @@ let game;     // Pantalla principal
 let red_c;      // cuadrilla piezas rojas
 let blue_c;     // cuadrilla piezas azules
 let green_c;   // cuadrilla piezas amarillas
-let piece;    // pieza a ser puesta
-let tries_left = 0; // contador de intentos restantes
 let colors = []; // arreglo con los colres de las piezas
 let global_game; // cuadrille con la unión de todas las piezas y el tablero principal
+let changed; // cuadrille temporal para verificar movimientos
 let game_patron;
 let red_patron;
 let green_patron;
@@ -93,6 +92,7 @@ function moveUp() {
           if (row - 1 >= 0 && global_game.read(row - 1, col) == null) {
             colors[i].fill(row - 1, col, colors[i].read(row, col));
             colors[i].fill(row, col, null);
+            changed = true;
             updateGame();
           }
         }
@@ -111,6 +111,7 @@ function moveDown() {
           if (row + 1 < game.height && global_game.read(row + 1, col) == null) {
             colors[i].fill(row + 1, col, colors[i].read(row, col));
             colors[i].fill(row, col, null);
+            changed = true;
             updateGame();
           }
         }
@@ -130,6 +131,7 @@ function moveLeft() {
           if (col - 1 >= 0 && global_game.read(row, col - 1) == null) {
             colors[i].fill(row, col - 1, colors[i].read(row, col));
             colors[i].fill(row, col, null);
+            changed = true;
             updateGame();
           }
         }
@@ -150,6 +152,7 @@ function moveRight() {
           if (col + 1 < game.width && global_game.read(row, col + 1) == null) {
             colors[i].fill(row, col + 1, colors[i].read(row, col));
             colors[i].fill(row, col, null);
+            changed = true;
             updateGame();
           }
         }
@@ -168,9 +171,10 @@ function checkPatron() {
       }
     }
   }
-  if (waiting == true) {
-    setTimeout(() => { waiting = false; attempts-- }, 200)
+  if (waiting == true && changed == true) {
+    setTimeout(() => { waiting = false; attempts--, changed = false; }, 200)
   }
+  waiting = false;
   updateGame();
 }
 
