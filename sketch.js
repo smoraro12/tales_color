@@ -172,7 +172,7 @@ function checkPatron() {
     }
   }
   if (waiting == true && changed == true) {
-    setTimeout(() => { waiting = false; attempts--, changed = false; }, 200)
+    setTimeout(() => { attempts--, changed = false; }, 200)
   }
   waiting = false;
   updateGame();
