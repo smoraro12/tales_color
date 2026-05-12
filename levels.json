@@ -1,0 +1,117 @@
+{
+    "levels": [
+        {
+            "id": 1,
+            "name": "Nivel 1",
+            "mapSize": {
+                "cols": 4,
+                "rows": 4
+            },
+            "perfectMoves": 3,
+            "boardPattern": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "colors": [
+                {
+                    "name": "red",
+                    "pattern": [
+                        "R",
+                        null,
+                        null,
+                        "R",
+                        null,
+                        "R",
+                        null,
+                        null,
+                        null,
+                        "R",
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "name": "green",
+                    "pattern": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        "G",
+                        null,
+                        null,
+                        null,
+                        "G",
+                        "G",
+                        "G",
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "pattern": [
+                        null,
+                        "B",
+                        "B",
+                        null,
+                        "B",
+                        null,
+                        null,
+                        null,
+                        "B",
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "name": "yellow",
+                    "pattern": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                }
+            ]
+        }
+    ]
+}

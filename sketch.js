@@ -1,6 +1,6 @@
 Quadrille.cellLength = 60;
-const cols = 8;
-const rows = 8;
+let cols = 8;
+let rows = 8;
 let game;     // Pantalla principal
 let red_c;      // cuadrilla piezas rojas
 let blue_c;     // cuadrilla piezas azules
@@ -15,20 +15,23 @@ let blue_patron;
 let win_patron = [];
 let waiting = false
 let attempts = 5;
+let currentLevel = 1;
+let perfect_attempts = 0;
 
 function setup() {
-  game_patron = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
-  red_patron = [color(255, 0, 0), null, null, color(255, 0, 0), null, color(255, 0, 0), null, null, null, color(255, 0, 0), null, null, null, null, null, null];
-  green_patron = [null, null, null, null, null, null, null, color(0, 255, 0), null, null, null, color(0, 255, 0), color(0, 255, 0), color(0, 255, 0), null, null];
-  blue_patron = [null, color(0, 0, 255), color(0, 0, 255), null, color(0, 0, 255), null, null, null, color(0, 0, 255), null, null, null, null, null, null, null];
+  //game_patron = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+  //red_patron = [color(255, 0, 0), null, null, color(255, 0, 0), null, color(255, 0, 0), null, null, null, color(255, 0, 0), null, null, null, null, null, null];
+  //green_patron = [null, null, null, null, null, null, null, color(0, 255, 0), null, null, null, color(0, 255, 0), color(0, 255, 0), color(0, 255, 0), null, null];
+  //blue_patron = [null, color(0, 0, 255), color(0, 0, 255), null, color(0, 0, 255), null, null, null, color(0, 0, 255), null, null, null, null, null, null, null];
   createCanvas(cols * Quadrille.cellLength + 100, rows * Quadrille.cellLength + 100);
-  game = createQuadrille(4, game_patron); // tablero principal con obstáculos
-  red_c = createQuadrille(4, red_patron);   // cuadrilla piezas rojas
-  colors.push(red_c);
-  green_c = createQuadrille(4, green_patron); // cuadrilla piezas verdes
-  colors.push(green_c);
-  blue_c = createQuadrille(4, blue_patron); // cuadrilla piezas azules
-  colors.push(blue_c);
+  // game = createQuadrille(4, game_patron); // tablero principal con obstáculos
+  //red_c = createQuadrille(4, red_patron);   // cuadrilla piezas rojas
+  //colors.push(red_c);
+  //green_c = createQuadrille(4, green_patron); // cuadrilla piezas verdes
+  //colors.push(green_c);
+  //blue_c = createQuadrille(4, blue_patron); // cuadrilla piezas azules
+  //colors.push(blue_c);
+  loadLevel(currentLevel);
   updateGame(); // cuadrille con la unión de todas las piezas y el tablero principal
 
   // Generación de patrones para cada pieza
@@ -63,13 +66,15 @@ function setup() {
 
 function draw() {
   background(0);
+  if (!game) return;
+
   drawQuadrille(game, { outlineWeight: 0.5 });
-  drawQuadrille(colors[0], { outlineWeight: 0.5 });
-  drawQuadrille(colors[1], { outlineWeight: 0.5 });
-  drawQuadrille(colors[2], { outlineWeight: 0.5 });
+  for (let c of colors) {
+    drawQuadrille(c, { outlineWeight: 0.5 });
+  }
   fill("yellow");
   textSize(16);
-  text(`Remaining attempts: ${attempts}`, 20, cols * Quadrille.cellLength);
+  text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength);
 
 }
 
@@ -184,4 +189,59 @@ function updateGame() {
   for (let i = 0; i < colors.length; i++) {
     global_game = Quadrille.or(global_game, colors[i]);
   }
+}
+
+function loadLevel(CurrentLevel) {
+  fetch("levels.json")
+    .then(r => r.json())
+    .then(data => {
+
+      let level = data.levels[CurrentLevel - 1];
+
+      cols = level.mapSize.cols;
+      rows = level.mapSize.rows;
+
+      game = createQuadrille(
+        rows,
+        level.boardPattern
+      );
+
+      colors = [];
+
+      for (let c of level.colors) {
+
+        let realColor;
+
+        switch (c.name) {
+          case "red":
+            realColor = color(255, 0, 0);
+            break;
+
+          case "green":
+            realColor = color(0, 255, 0);
+            break;
+
+          case "blue":
+            realColor = color(0, 0, 255);
+            break;
+
+          case "yellow":
+            realColor = color(255, 255, 0);
+            break;
+        }
+
+        // Reemplazar letras por colores reales
+        let pattern = c.pattern.map(cell => {
+          return cell ? realColor : null;
+        });
+
+        colors.push(
+          createQuadrille(rows, pattern)
+        );
+      }
+
+      perfect_attempts = level.perfectMoves;
+
+      updateGame();
+    });
 }
