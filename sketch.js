@@ -104,6 +104,7 @@ function moveUp() {
       }
     }
   }
+  attempts--;
   checkPatron();
 }
 function moveDown() {
@@ -123,6 +124,7 @@ function moveDown() {
       }
     }
   }
+  attempts--;
   checkPatron();
 }
 
@@ -143,6 +145,7 @@ function moveLeft() {
       }
     }
   }
+  attempts--;
   checkPatron();
 }
 
@@ -164,6 +167,7 @@ function moveRight() {
       }
     }
   }
+  attempts--;
   checkPatron();
 }
 
@@ -177,9 +181,9 @@ function checkPatron() {
     }
   }
   if (waiting == true && changed == true) {
-    setTimeout(() => { attempts--, changed = false; }, 200)
+    setTimeout(() => { changed = false; waiting = false }, 400)
   }
-  waiting = false;
+
   updateGame();
 }
 
