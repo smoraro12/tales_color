@@ -17,57 +17,10 @@ let waiting = false
 let attempts = 5;
 let currentLevel = 1;
 let perfect_attempts = 0;
-let gamestate = "menu"; // Menu, niveles, jugando, confirmar, ganar
+let gamestate = "playing"; // Menu, niveles, jugando, confirmar, ganar
 let btnPlay;
 
-class Button {
-  constructor(x, y, w, h, label, onClick) {
-    this.x = x; // posición x del botón
-    this.y = y; // posición y del botón
-    this.w = w; // ancho
-    this.h = h; // alto
-    this.label = label; // texto del botón
-    this.onClick = onClick; // función a ejecutar al hacer click
-  }
 
-  show() {
-    // hover
-    let isHover = this.isHover(mouseX, mouseY);
-    // detecta si el boton está seleccionado (solo para poker y emojis)
-    let isSelected = 
-    (this.label === "Poker" && estilo === 0) || 
-    (this.label === "Emojis" && estilo === 1); 
-
-    //estilos de botón
-    if (isSelected) {
-    fill(0, 200, 100);
-    } else if (isHover) {
-    fill(255, 100);
-    } else {
-    fill(200, 50);
-    }
-    stroke(255);
-    rect(this.x, this.y, this.w, this.h, 15);
-
-    // texto
-    fill(255);
-    noStroke();
-    textAlign(CENTER, CENTER);
-    textSize(18);
-    text(this.label, this.x + this.w/2, this.y + this.h/2);
-  }
-  // Detecta si el mouse está encima del botón
-  isHover(mx, my) {
-    return mx > this.x && mx < this.x + this.w &&
-           my > this.y && my < this.y + this.h;
-  }
-// Ejecuta la acción si el click ocurre dentro del botón
-  handleClick() {
-    if (this.isHover(mouseX, mouseY)) {
-      this.onClick();
-    }
-  }
-}
 
 function setup() {
   //game_patron = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
@@ -140,7 +93,15 @@ function draw() {
       drawWin();
       break;
   }
-
+    drawBackground();
+  drawQuadrille(game, { outlineWeight: 0.5 });
+  for (let c of colors) {
+    drawQuadrille(c, { outlineWeight: 0.5 });
+  }
+  fill("yellow");
+  textSize(16);
+  text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength);
+  
 }
 
 function drawMenu(){
