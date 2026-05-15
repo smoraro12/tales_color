@@ -20,9 +20,41 @@ let perfect_attempts = 0;
 let gamestate = "playing"; // Menu, niveles, jugando, confirmar, ganar
 let btnPlay;
 
+class Button{
+    constructor(x, y, w, h, label, onClick){
+        this.x = x; // Posición del boton en x
+        this.y = y; // Posicion del boton en y
+        this.w = w; // ancho del boton
+        this.h = h; // Alto del boton 
+        this.label = label; // Texto del boton
+        this.onClick = onClick; // Que hace el boton cuando se oprime
+    }
 
+    show (){
+      
+    }
+
+    // Detecta si el mouse esta encima del boton
+    isHover(mx, my){
+        return mx > this.x && mx < this.x + this.w && my > this.y && my < this.y + this.h; 
+    }
+
+    // Ejecuta la acción si da click en el boton
+    handleClick(){
+        if(this.isHover(mouseX, mouseY)){
+            this.onClick();
+        }
+    }
+}
+
+function createButtons(){
+    btnJugar = new Button(width/2 - 75, height/2, 150, 50, "Jugar", () => {
+    gameState = "levels";
+  });
+}
 
 function setup() {
+    createButtons();
   //game_patron = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
   //red_patron = [color(255, 0, 0), null, null, color(255, 0, 0), null, color(255, 0, 0), null, null, null, color(255, 0, 0), null, null, null, null, null, null];
   //green_patron = [null, null, null, null, null, null, null, color(0, 255, 0), null, null, null, color(0, 255, 0), color(0, 255, 0), color(0, 255, 0), null, null];
@@ -66,55 +98,36 @@ function setup() {
     s_patron.clone().rotate(180),
     square_patron,
   );
-  createButtons();
-}
-
-function createButtons(){
-  btnPlay = new Button(75, 75, 150, 50, "Jugar", () => {
-    gamestate = "playing";
-  });
 }
 
 function draw() {
-  drawBackground();
-  switch (gamestate) {
-    case "menu":
-      drawMenu(); // Pantalla inicial
-      break;
-    case "levels":
-      drawLevels(); // Menu niveles
-      break;
-    case "playing": // Juego
-      drawPlaying();
-      break;
-    case "confirm":
-      drawConfirm();
-    case "win":
-      drawWin();
-      break;
-  }
     drawBackground();
-  drawQuadrille(game, { outlineWeight: 0.5 });
-  for (let c of colors) {
-    drawQuadrille(c, { outlineWeight: 0.5 });
-  }
-  fill("yellow");
-  textSize(16);
-  text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength);
-  
-}
-
-function drawMenu(){
-  drawBackground();
-  btnPlay.show();
+    switch(gamestate){
+        case "menu":
+            drawMenu();
+            break;
+        case "playing":
+            drawPlaying()
+            break;
+    }
 }
 
 function drawBackground(){
-  background(0);
+    background(0);
+}
+
+function drawMenu(){
+    push();
+    textAlign(CENTER);
+    fill(255, 255, 255);
+    textSize(40);
+    text("Tales colores", width/2, height/2 - 100);
+    
 }
 
 function drawPlaying(){
-  drawBackground();
+  if (!game) return;
+
   drawQuadrille(game, { outlineWeight: 0.5 });
   for (let c of colors) {
     drawQuadrille(c, { outlineWeight: 0.5 });
@@ -122,6 +135,7 @@ function drawPlaying(){
   fill("yellow");
   textSize(16);
   text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength);
+
 }
 
 
