@@ -16,7 +16,10 @@ let win_patron = [];
 let waiting = false
 let attempts = 5;
 let currentLevel = 1;
-let perfect_attempts = 0;
+let perfectAttempts = 0;
+let timeline = [];
+let attemptsLevel;
+let totalLevels = 0;
 let gameState = "menu"; // Menu, niveles, jugando, confirmar, ganar
 let btnPlay;
 class Button{
@@ -68,12 +71,14 @@ function createButtons(){
     btnPlay = new Button(width/2 - 75, height/2, 150, 50, "Jugar", () => {
     gameState = "playing";
   });
+    btnReset = new Button(300, 20, 120, 40, "Inicio", () => {
+    gameState = "menu";
+  });
 }
 
 function setup() {
   createCanvas(cols * Quadrille.cellLength + 100, rows * Quadrille.cellLength + 100); // Cambas creado basado en tamaño de tablero
   loadLevel(currentLevel); // Carga el nivel inicial definido en levels.json
-  updateGame(); // Actualización del quadrille global para verificar colisiones y movimientos
 
   // Generación de patrones para cada pieza
   const horizontal_patron = createQuadrille([color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0)]);
@@ -140,20 +145,19 @@ function drawPlaying(){
   for (let c of colors) { // Dibujo de cada quadrille que contiene piezas de color
     drawQuadrille(c, { outlineWeight: 0.5 });
   }
-  fill("yellow"); // Definición color de texto
-  textSize(16); // Definición tamaño de texto
-  text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength); // Dibujo de texto que muestra intentos restantes
   push();
   fill("yellow");
   textSize(16);
   textAlign(LEFT, BOTTOM);
   text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength);
   pop();
+  btnReset.show();
 
 }
 
 // Definición de función para manejar eventos de teclado
 function keyPressed() {
+  if (gameState !== "playing") return false; //  PAra que no se mueve si esta en menu
   key === 'ArrowLeft' && moveLeft(); // Se mueven piezas a la izquierda dentro del quadrille
   key === 'ArrowRight' && moveRight();  // Se mueven piezas a la derecha dentro del quadrille
   key === 'ArrowUp' && moveUp();    // Se mueven piezas hacia arriba dentro del quadrille
@@ -164,7 +168,10 @@ function keyPressed() {
 
 function mouseClicked() {
     if (gameState === "menu" && btnPlay) {
-        btnPlay.handleClick();
+      btnPlay.handleClick();
+    }
+    else if (gameState === "playing" && btnReset) {
+      btnReset.handleClick();
     }
 }
 
