@@ -10,6 +10,7 @@ let waiting = false
 let attempts = 5;
 let currentLevel = 1;
 let perfect_attempts = 0;
+let gameState = "home"; // "home" o "game"
 
 function setup() {
   createCanvas(cols * Quadrille.cellLength + 100, rows * Quadrille.cellLength + 100);
@@ -47,7 +48,9 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+ background(0)
+  //drawBackground();
+
   if (!game) return;
 
   drawQuadrille(game, { outlineWeight: 0.5 });
