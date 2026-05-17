@@ -17,7 +17,7 @@ let waiting = false
 let attempts = 5;
 let currentLevel = 1;
 let perfect_attempts = 0;
-let gamestate = "playing"; // Menu, niveles, jugando, confirmar, ganar
+let gameState = "menu"; // Menu, niveles, jugando, confirmar, ganar
 let btnPlay;
 
 class Button{
@@ -31,7 +31,25 @@ class Button{
     }
 
     show (){
+      let isHover = this.isHover(mouseX, mouseY);
       
+      //Si esta en el boton el mouse que sea gris
+      if (isHover){
+        fill(255, 100);
+      } 
+      // sino esta que este normal
+      else{
+        fill(200, 50);
+      }
+      stroke(0); // El contorno negro
+      rect(this.x, this.y, this.w, this.h);
+
+      // Texto
+      fill(255);
+      noStroke();
+      textAlign(CENTER, CENTER);
+      textSize(18);
+      text(this.label, this.x + this.w/2, this.y + this.h/2);
     }
 
     // Detecta si el mouse esta encima del boton
@@ -48,13 +66,12 @@ class Button{
 }
 
 function createButtons(){
-    btnJugar = new Button(width/2 - 75, height/2, 150, 50, "Jugar", () => {
-    gameState = "levels";
+    btnPlay = new Button(width/2 - 75, height/2, 150, 50, "Jugar", () => {
+    gameState = "playing";
   });
 }
 
 function setup() {
-    createButtons();
   //game_patron = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
   //red_patron = [color(255, 0, 0), null, null, color(255, 0, 0), null, color(255, 0, 0), null, null, null, color(255, 0, 0), null, null, null, null, null, null];
   //green_patron = [null, null, null, null, null, null, null, color(0, 255, 0), null, null, null, color(0, 255, 0), color(0, 255, 0), color(0, 255, 0), null, null];
@@ -98,11 +115,12 @@ function setup() {
     s_patron.clone().rotate(180),
     square_patron,
   );
+  createButtons();
 }
 
 function draw() {
     drawBackground();
-    switch(gamestate){
+    switch(gameState){
         case "menu":
             drawMenu();
             break;
@@ -122,6 +140,8 @@ function drawMenu(){
     fill(255, 255, 255);
     textSize(40);
     text("Tales colores", width/2, height/2 - 100);
+    pop();
+    btnPlay.show();
     
 }
 
@@ -132,9 +152,12 @@ function drawPlaying(){
   for (let c of colors) {
     drawQuadrille(c, { outlineWeight: 0.5 });
   }
+  push();
   fill("yellow");
   textSize(16);
+  textAlign(LEFT, BOTTOM);
   text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength);
+  pop();
 
 }
 
@@ -145,6 +168,12 @@ function keyPressed() {
   key === 'ArrowUp' && moveUp();    // Se mueven piezas hacia arriba dentro del quadrille
   key === 'ArrowDown' && moveDown();   // se mueven piezas hacia abajo dentro del quadrille
   return false;
+}
+
+function mouseClicked() {
+    if (gameState === "menu" && btnPlay) {
+        btnPlay.handleClick();
+    }
 }
 
 function moveUp() {
