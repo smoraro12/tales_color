@@ -389,8 +389,16 @@ function loadLevel(CurrentLevel) { // Función para cargar niveles definidos en 
             realColor = color(255, 0, 0);
             break;
 
-          case "green":
-            realColor = color(0, 255, 0);
+          case "grey":
+            realColor = color(128, 128, 128);
+            break;
+          
+          case "purple":
+            realColor = color(128, 0, 128);
+            break;
+
+          case "orange":
+            realColor = color(255, 165, 0);
             break;
 
           case "blue":
@@ -399,6 +407,10 @@ function loadLevel(CurrentLevel) { // Función para cargar niveles definidos en 
 
           case "yellow":
             realColor = color(255, 255, 0);
+            break;
+
+          case "cyan":
+            realColor = color(0, 255, 255);
             break;
         }
 
