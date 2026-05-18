@@ -71,7 +71,7 @@ function createButtons(){
     btnPlay = new Button(width/2 - 75, height/2, 150, 50, "Jugar", () => {
     gameState = "playing";
   });
-    btnReset = new Button(300, 20, 120, 40, "Inicio", () => {
+    btnReset = new Button(300, 100, 120, 40, "Inicio", () => {
     gameState = "menu";
   });
 }
@@ -141,9 +141,14 @@ function drawMenu(){
 function drawPlaying(){
   if (!game) return;
 
-  drawQuadrille(game, { outlineWeight: 0.5 }); // dibujo de quadrille de juego
+  // Calcula las margenes
+  let offsetX = (width - (cols * Quadrille.cellLength)) / 2;
+  let offsetY = (height - (rows * Quadrille.cellLength)) / 2;
+
+  drawQuadrille(game, { x: offsetX, y: offsetY, outlineWeight: 0.5 }); // dibujo de quadrille de juego
+
   for (let c of colors) { // Dibujo de cada quadrille que contiene piezas de color
-    drawQuadrille(c, { outlineWeight: 0.5 });
+    drawQuadrille(c, { x: offsetX, y: offsetY, outlineWeight: 0.5 });
   }
   push();
   fill("yellow");
