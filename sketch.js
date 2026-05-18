@@ -5,13 +5,14 @@ let game;     // Pantalla principal
 let red_c;      // cuadrilla piezas rojas
 let blue_c;     // cuadrilla piezas azules
 let green_c;   // cuadrilla piezas amarillas
-let colors = []; // arreglo con los colres de las piezas
+let colors = []; // arreglo con los cologres de las piezas
 let global_game; // cuadrille con la unión de todas las piezas y el tablero principal
 let changed; // cuadrille temporal para verificar movimientos
 let game_patron;
 let red_patron;
 let green_patron;
 let blue_patron;
+let yellow_patron;
 let win_patron = [];
 let waiting = false
 let attempts = 5;
@@ -83,6 +84,7 @@ function setup() {
   // Generación de patrones para cada pieza
   const horizontal_patron = createQuadrille([color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0)]);
   const t_patron = createQuadrille(2, [color(255, 0, 0), null, color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), null]);
+  const t_patron_up = createQuadrille(3, [null, color(255, 0, 0), null, color(255, 0, 0), color(255, 0, 0), color(255, 0, 0)]);
   const l_patron = createQuadrille(2, [color(255, 0, 0), null, color(255, 0, 0), null, color(255, 0, 0), color(255, 0, 0)]);
   const s_patron = createQuadrille(2, [null, color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), null]);
   const square_patron = createQuadrille(2, [color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0)]);
@@ -90,9 +92,11 @@ function setup() {
   win_patron.push(horizontal_patron,
     horizontal_patron.clone().transpose(),
     t_patron,
-    t_patron.clone().reflect(),
+    t_patron_up,
+    t_patron.clone().rotate(180),
     t_patron.clone().transpose(),
-    t_patron.clone().transpose().reflect(),
+    t_patron.clone().transpose().rotate(180),
+    t_patron.clone().reflect().transpose(),
     l_patron,
     l_patron.clone().reflect(),
     l_patron.clone().rotate(180),

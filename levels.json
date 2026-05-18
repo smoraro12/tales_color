@@ -4,111 +4,46 @@
             "id": 1,
             "name": "Nivel 1",
             "mapSize": {
-                "cols": 4,
-                "rows": 4
+                "cols": 3,
+                "rows": 3
             },
-            "perfectMoves": 3,
+            "perfectMoves": 1,
             "boardPattern": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
+                null, null, null,
+                null, null, null,
+                null, null, null
             ],
             "colors": [
                 {
                     "name": "red",
                     "pattern": [
-                        "R",
-                        null,
-                        null,
-                        "R",
-                        null,
-                        "R",
-                        null,
-                        null,
-                        null,
-                        "R",
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        "R", null, null,
+                        "R", null, "R",
+                        "R", null, null
                     ]
                 },
                 {
                     "name": "green",
                     "pattern": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        "G",
-                        null,
-                        null,
-                        null,
-                        "G",
-                        "G",
-                        "G",
-                        null,
-                        null
+                        null, null, null,
+                        null, null, null,
+                        null, null, null
                     ]
                 },
                 {
                     "name": "blue",
                     "pattern": [
-                        null,
-                        "B",
-                        "B",
-                        null,
-                        "B",
-                        null,
-                        null,
-                        null,
-                        "B",
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        null, null, null,
+                        null, null, null,
+                        null, null, null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        null, "y", "y",
+                        null, null, null,
+                        null, "y", "y"
                     ]
                 }
             ]
@@ -122,109 +57,442 @@
             },
             "perfectMoves": 3,
             "boardPattern": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
+                null, null, null, null,
+                null, null, null, null,
+                null, null, null, null,
+                null, null, null, null
             ],
             "colors": [
                 {
                     "name": "red",
                     "pattern": [
-                        "R",
-                        null,
-                        null,
-                        "R",
-                        null,
-                        "R",
-                        null,
-                        null,
-                        null,
-                        "R",
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        null, null, null, null,
+                        null, "R", null, null,
+                        null, null, "R", "R",
+                        null, null, "R", null
                     ]
                 },
                 {
                     "name": "green",
                     "pattern": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        "G",
-                        null,
-                        null,
-                        null,
-                        "G",
-                        "G",
-                        "G",
-                        null,
-                        null
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, null
                     ]
                 },
                 {
                     "name": "blue",
                     "pattern": [
-                        null,
-                        "B",
-                        "B",
-                        null,
-                        "B",
-                        null,
-                        null,
-                        null,
-                        "B",
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        null, "B", "B", null,
+                        "B", null, null, null,
+                        "B", null, null, null,
+                        null, null, null, null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        null, null, null, "y",
+                        null, null, "y", "y",
+                        null, null, null, null,
+                        null, null, null, "y"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Nivel 3",
+            "mapSize": {
+                "cols": 4,
+                "rows": 4
+            },
+            "perfectMoves": 3,
+            "boardPattern": [
+                "G", null, null, null,
+                null, null, null, null,
+                null, null, null, null,
+                null, null, null, null
+            ],
+            "colors": [
+                {
+                    "name": "red",
+                    "pattern": [
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, "R",
+                        "R", null, "R", "R"
+                    ]
+                },
+                {
+                    "name": "green",
+                    "pattern": [
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, null
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "pattern": [
+                        null, null, null, null,
+                        null, null, null, "B",
+                        "B", null, "B", null,
+                        null, "B", null, null
+                    ]
+                },
+                {
+                    "name": "yellow",
+                    "pattern": [
+                        null, null, "Y", "Y",
+                        null, null, "Y", null,
+                        null, "Y", null, null,
+                        null, null, null, null
                     ]
                 }
             ]
         }
+        ,{
+            "id": 4,
+            "name": "Nivel 4",
+            "mapSize": {
+                "cols": 4,
+                "rows": 4
+            },
+            "perfectMoves": 3,
+            "boardPattern": [
+                null, null, null, null,
+                "G", null, "G", null,
+                null, null, null, null,
+                null, null, null, null
+            ],
+            "colors": [
+                {
+                    "name": "red",
+                    "pattern": [
+                        null, null, null, null,
+                        null, null, null, null,
+                        "R", null, "R", null,
+                        "R", null, "R", null
+                    ]
+                },
+                {
+                    "name": "green",
+                    "pattern": [
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, null
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "pattern": [
+                        "B", null, "B", "B",
+                        null, "B", null, null,
+                        null, null, null, null,
+                        null, null, null, null
+                    ]
+                },
+                {
+                    "name": "yellow",
+                    "pattern": [
+                        null, null, null, null,
+                        null, null, null, "Y",
+                        null, "Y", null, "Y",
+                        null, null, null, "Y"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Nivel 5",
+            "mapSize": {
+                "cols": 4,
+                "rows": 4
+            },
+            "perfectMoves": 3,
+            "boardPattern": [
+                null, null, null, null,
+                null, null, null, null,
+                null, null, null, null,
+                null, null, null, null
+            ],
+            "colors": [
+                {
+                    "name": "red",
+                    "pattern": [
+                        null, null, "R", null,
+                        null, null, "R", null,
+                        "R", "R", null, null,
+                        null, null, null, null
+                    ]
+                },
+                {
+                    "name": "green",
+                    "pattern": [
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, null,
+                        null, null, null, null
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "pattern": [
+                        "B", null, null, null,
+                        "B", "B", null, null,
+                        null, null, null, null,
+                        "B", null, null, null
+                    ]
+                },
+                {
+                    "name": "yellow",
+                    "pattern": [
+                        null, null, null, "Y",
+                        null, null, null, "Y",
+                        null, null, "Y", null,
+                        null, null, null, "Y"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Nivel 6",
+            "mapSize": {
+                "cols": 5,
+                "rows": 5
+            },
+            "perfectMoves": 3,
+            "boardPattern": [
+                null, null, null, null, null,
+                null, "G", null, null, null,
+                "G", null, null, null, null,
+                null, null, null, null, null,
+                null, "G", null, null, null
+            ],
+            "colors": [
+                {
+                    "name": "red",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, "R", null, null,
+                    null, "R", null, null, null,
+                    "R", null, null, null, null,
+                    "R", null, null, null, null
+                    ]
+                },
+                {
+                    "name": "green",
+                    "pattern": [
+                    null, "O", null, "O", "O",
+                    "O", null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, "B", "B",
+                    null, null, "B", null, null,
+                    null, null, null, null, "B"
+                    ]
+                },
+                {
+                    "name": "yellow",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, "Y", null, null,
+                    null, null, null, "Y", "Y",
+                    null, null, null, "Y", null
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Nivel 7",
+            "mapSize": {
+                "cols": 5,
+                "rows": 5
+            },
+            "perfectMoves": 3,
+            "boardPattern": [
+                null, null, null, null, null,
+                "G", null, null, "G", null,
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null, null, "G", null
+            ],
+            "colors": [
+                {
+                    "name": "red",
+                    "pattern": [
+                    "R", null, null, null, null,
+                    null, "R", null, null, null,
+                    "R", "R", null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "green",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, "O", null,
+                    "O", "O", "O", null, null
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "pattern": [
+                    null, null, "B", null, null,
+                    null, null, "B", null, null,
+                    null, null, "B", null, null,
+                    null, "B", null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "yellow",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, "Y",
+                    null, null, null, "Y", "Y",
+                    null, null, null, null, null,
+                    null, null, null, null, "Y"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Nivel 8",
+            "mapSize": {
+                "cols": 5,
+                "rows": 5
+            },
+            "perfectMoves": 3,
+            "boardPattern": [
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null, null, null, null
+            ],
+            "colors": [
+                {
+                    "name": "red",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "green",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "yellow",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Nivel 7",
+            "mapSize": {
+                "cols": 5,
+                "rows": 5
+            },
+            "perfectMoves": 3,
+            "boardPattern": [
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null, null, null, null
+            ],
+            "colors": [
+                {
+                    "name": "red",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "green",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                },
+                {
+                    "name": "yellow",
+                    "pattern": [
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null,
+                    null, null, null, null, null
+                    ]
+                }
+            ]
+        }
+        
+        
     ]
 }
