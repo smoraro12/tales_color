@@ -1,27 +1,90 @@
 Quadrille.cellLength = 60; //Define tamaño de celda 
 let cols = 8; // Inicialización de variables que definen el número de columnas y filas del tablero
 let rows = 8;
-let game;     // Quadrille de juego vacio que puede contener obstaculos
-let colors = []; // arreglo que contedrá los quadrilles para cada pieza de color
-let global_game; // Quadrille para identificar colisiones entre piezas y el tablero
-let changed; // Variable que determina si un movimiento resultó en un cambio en el tablero
-let win_patron = []; // Arreglo que contiene los patrones de victoria
-let waiting = false // Variable que restringe movimientos adicionales si se están efectuando animaciones o verificaciones
-let attempts = 5; // Cantidad inicial de intentos que varia con aciertos, errores y niveles completados
-let currentLevel = 1; // Nivel actual del juego
-let perfectAttempts = 0; // Número de movimientos minimos para completar el nivel, definido en levels.json
-let attemptsLevel = 0; // Contador de movimientos realizados en el nivel actual usado para determinar si se hizo la cantidad minima de movimientos
-let timeline = []; // Arreglo que almacena los estados del tablero para permitir deshacer movimientos
+let game;     // Pantalla principal
+let red_c;      // cuadrilla piezas rojas
+let blue_c;     // cuadrilla piezas azules
+let green_c;   // cuadrilla piezas amarillas
+let colors = []; // arreglo con los cologres de las piezas
+let global_game; // cuadrille con la unión de todas las piezas y el tablero principal
+let changed; // cuadrille temporal para verificar movimientos
+let game_patron;
+let red_patron;
+let green_patron;
+let blue_patron;
+let yellow_patron;
+let win_patron = [];
+let waiting = false
+let attempts = 5;
+let currentLevel = 1;
+let perfectAttempts = 0;
+let timeline = [];
+let attemptsLevel;
 let totalLevels = 0;
+let gameState = "menu"; // Menu, niveles, jugando, confirmar, ganar
+let btnPlay;
+class Button{
+    constructor(x, y, w, h, label, onClick){
+        this.x = x; // Posición del boton en x
+        this.y = y; // Posicion del boton en y
+        this.w = w; // ancho del boton
+        this.h = h; // Alto del boton 
+        this.label = label; // Texto del boton
+        this.onClick = onClick; // Que hace el boton cuando se oprime
+    }
+
+    show (){
+      let isHover = this.isHover(mouseX, mouseY);
+      
+      //Si esta en el boton el mouse que sea gris
+      if (isHover){
+        fill(255, 100);
+      } 
+      // sino esta que este normal
+      else{
+        fill(200, 50);
+      }
+      stroke(0); // El contorno negro
+      rect(this.x, this.y, this.w, this.h);
+
+      // Texto
+      fill(255);
+      noStroke();
+      textAlign(CENTER, CENTER);
+      textSize(18);
+      text(this.label, this.x + this.w/2, this.y + this.h/2);
+    }
+
+    // Detecta si el mouse esta encima del boton
+    isHover(mx, my){
+        return mx > this.x && mx < this.x + this.w && my > this.y && my < this.y + this.h; 
+    }
+
+    // Ejecuta la acción si da click en el boton
+    handleClick(){
+        if(this.isHover(mouseX, mouseY)){
+            this.onClick();
+        }
+    }
+}
+
+function createButtons(){
+    btnPlay = new Button(width/2 - 75, height/2, 150, 50, "Jugar", () => {
+    gameState = "playing";
+  });
+    btnReset = new Button(300, 100, 120, 40, "Inicio", () => {
+    gameState = "menu";
+  });
+}
 
 function setup() {
   createCanvas(cols * Quadrille.cellLength + 100, rows * Quadrille.cellLength + 100); // Cambas creado basado en tamaño de tablero
   loadLevel(currentLevel); // Carga el nivel inicial definido en levels.json
-  updateGame(); // Actualización del quadrille global para verificar colisiones y movimientos
 
   // Generación de patrones para cada pieza
   const horizontal_patron = createQuadrille([color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0)]);
   const t_patron = createQuadrille(2, [color(255, 0, 0), null, color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), null]);
+  const t_patron_up = createQuadrille(3, [null, color(255, 0, 0), null, color(255, 0, 0), color(255, 0, 0), color(255, 0, 0)]);
   const l_patron = createQuadrille(2, [color(255, 0, 0), null, color(255, 0, 0), null, color(255, 0, 0), color(255, 0, 0)]);
   const s_patron = createQuadrille(2, [null, color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), null]);
   const square_patron = createQuadrille(2, [color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0)]);
@@ -29,9 +92,11 @@ function setup() {
   win_patron.push(horizontal_patron,
     horizontal_patron.clone().transpose(),
     t_patron,
-    t_patron.clone().reflect(),
+    t_patron_up,
+    t_patron.clone().rotate(180),
     t_patron.clone().transpose(),
-    t_patron.clone().transpose().reflect(),
+    t_patron.clone().transpose().rotate(180),
+    t_patron.clone().reflect().transpose(),
     l_patron,
     l_patron.clone().reflect(),
     l_patron.clone().rotate(180),
@@ -47,24 +112,61 @@ function setup() {
     s_patron.clone().rotate(180),
     square_patron,
   );
+  createButtons();
 }
 
 function draw() {
+    drawBackground();
+    switch(gameState){
+        case "menu":
+            drawMenu();
+            break;
+        case "playing":
+            drawPlaying()
+            break;
+    }
+}
 
+function drawBackground(){
+    background(0);
+}
+
+function drawMenu(){
+    push();
+    textAlign(CENTER);
+    fill(255, 255, 255);
+    textSize(40);
+    text("Tales colores", width/2, height/2 - 100);
+    pop();
+    btnPlay.show();
+    
+}
+
+function drawPlaying(){
   if (!game) return;
-  background(0); // definición de color de fondo
 
-  drawQuadrille(game, { outlineWeight: 0.5 }); // dibujo de quadrille de juego
+  // Calcula las margenes
+  let offsetX = (width - (cols * Quadrille.cellLength)) / 2;
+  let offsetY = (height - (rows * Quadrille.cellLength)) / 2;
+
+  drawQuadrille(game, { x: offsetX, y: offsetY, outlineWeight: 0.5 }); // dibujo de quadrille de juego
+
   for (let c of colors) { // Dibujo de cada quadrille que contiene piezas de color
-    drawQuadrille(c, { outlineWeight: 0.5 });
+    drawQuadrille(c, { x: offsetX, y: offsetY, outlineWeight: 0.5 });
   }
-  fill("yellow"); // Definición color de texto
-  textSize(16); // Definición tamaño de texto
-  text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength); // Dibujo de texto que muestra intentos restantes
+  push();
+  fill("yellow");
+  textSize(16);
+  textAlign(LEFT, BOTTOM);
+  text(`Remaining attempts: ${attempts}`, 20, 8 * Quadrille.cellLength);
+  pop();
+  btnReset.show();
+
 }
 
 // Definición de función para manejar eventos de teclado
 function keyPressed() {
+  if (gameState !== "playing") return false; //  PAra que no se mueve si esta en menu
   key === 'ArrowLeft' && moveLeft(); // Se mueven piezas a la izquierda dentro del quadrille
   key === 'ArrowRight' && moveRight();  // Se mueven piezas a la derecha dentro del quadrille
   key === 'ArrowUp' && moveUp();    // Se mueven piezas hacia arriba dentro del quadrille
@@ -72,6 +174,16 @@ function keyPressed() {
   key === 't' && undoMovement(); // Deshacer movimiento
   return false;
 }
+
+function mouseClicked() {
+    if (gameState === "menu" && btnPlay) {
+      btnPlay.handleClick();
+    }
+    else if (gameState === "playing" && btnReset) {
+      btnReset.handleClick();
+    }
+}
+
 // Definición de funciones para mover piezas en cada dirección
 function moveUp() {
   if (waiting || attempts <= 0) return; // Si se esta haciendo un movimiento o no hay intentos restantes, no se genera un nuevo movimiento
@@ -277,8 +389,16 @@ function loadLevel(CurrentLevel) { // Función para cargar niveles definidos en 
             realColor = color(255, 0, 0);
             break;
 
-          case "green":
-            realColor = color(0, 255, 0);
+          case "grey":
+            realColor = color(128, 128, 128);
+            break;
+          
+          case "purple":
+            realColor = color(128, 0, 128);
+            break;
+
+          case "orange":
+            realColor = color(255, 165, 0);
             break;
 
           case "blue":
@@ -287,6 +407,10 @@ function loadLevel(CurrentLevel) { // Función para cargar niveles definidos en 
 
           case "yellow":
             realColor = color(255, 255, 0);
+            break;
+
+          case "cyan":
+            realColor = color(0, 255, 255);
             break;
         }
 
