@@ -452,15 +452,15 @@
               break;
 
             case "grey":
-            realColor = color(128, 128, 128);
-            break;
-          
-          case "purple":
-              realColor = color(128, 0, 128);
-            break;
+              realColor = color(128, 128, 128);
+              break;
 
-          case "orange":
-            realColor = color(255, 165, 0);
+            case "purple":
+              realColor = color(128, 0, 128);
+              break;
+
+            case "orange":
+              realColor = color(255, 165, 0);
               break;
 
             case "blue":
@@ -470,15 +470,11 @@
             case "yellow":
               realColor = color(255, 255, 0);
               break;
-          }
-          case "yellow":
-            realColor = color(255, 255, 0);
-            break;
 
-          case "cyan":
-            realColor = color(0, 255, 255);
-            break;
-        }
+            case "cyan":
+              realColor = color(0, 255, 255);
+              break;
+          }
 
           let pattern = c.pattern.map(cell => { // Se genera un arreglo pattern con la posición de las piezas de color
             return cell ? realColor : null; // Si la celda tiene un valor, se reemplaza por el color real asignado, de lo contrario se deja como null para indicar que no hay pieza de color en esa posición
