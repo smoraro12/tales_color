@@ -18,3 +18,4 @@ function drawBackground() {
     pop();
   }
 } 
+//Funcion para creacion de fondo en el juego, dependiendo del estado del juego se muestra un fondo u otro. En el estado "home" se muestra una imagen de fondo con un filtro de desenfoque de 4px, mientras que en el estado "game" se muestra otra imagen de fondo con un filtro de desenfoque de 2px.
