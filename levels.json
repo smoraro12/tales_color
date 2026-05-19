@@ -261,7 +261,7 @@
             ]
         },
         {
-            "id": 5,
+            "id": 6,
             "name": "Nivel 6",
             "mapSize": {
                 "cols": 5,
@@ -435,8 +435,8 @@
             ]
         },
         {
-            "id": 7,
-            "name": "Nivel 7",
+            "id": 9,
+            "name": "Nivel 9",
             "mapSize": {
                 "cols": 5,
                 "rows": 5
