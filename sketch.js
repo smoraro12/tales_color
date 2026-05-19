@@ -33,7 +33,7 @@
           this.label = label; // Texto del boton
           this.onClick = onClick; // Que hace el boton cuando se oprime
 
-          this.baseColor = [70, 130, 180, 180]; // azul con transparencia
+          this.baseColor = [70, 130, 180, 180]; // color con transparencia para el boton
           this.hoverColor = [100, 160, 220, 220]; // más claro al pasar mouse
           this.textColor = [255, 255, 255];
           this.radius = 12;
@@ -78,7 +78,7 @@
       btnPlay = new Button(width/2 - 75, height/2, 150, 50, "Jugar", () => {
       gameState = "playing";
     });
-      btnReset = new Button(0, 0, 120, 37, "Inicio", () => {
+      btnReset = new Button(0, 0, 120, 37, "Inicio", () => { // el bot
       gameState = "menu";
     });
   }
@@ -96,7 +96,7 @@
     const l_patron = createQuadrille(2, [color(255, 0, 0), null, color(255, 0, 0), null, color(255, 0, 0), color(255, 0, 0)]);
     const s_patron = createQuadrille(2, [null, color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), null]);
     const square_patron = createQuadrille(2, [color(255, 0, 0), color(255, 0, 0), color(255, 0, 0), color(255, 0, 0)]);
-    // Agregación de patrones al arreglo de patrones de victoria, incluyendo sus transformaciones (rotaciones y reflexiones)
+    // Agregación de patrones al arreglo de patrones de victoria, incluyendo sus transformaciones (rotaciones y reflexiones)gi
     win_patron.push(horizontal_patron,
       horizontal_patron.clone().transpose(),
       t_patron,
