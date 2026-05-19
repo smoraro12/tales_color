@@ -1,24 +1,36 @@
-body {
+
+ body {
   margin: 0;
   height: 100vh;
-
- 
-  background: radial-gradient(circle at top, #2ecc71, #1a2a6c);
-
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  font-family: Arial, sans-serif;
+ #bg-video{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* detrás de todo */
+  filter: blur(6px) brightness(0.6);
 }
 
 /* Tarjeta */
 #game-container {
-  background: transparent; /* importante */
+  display: flex;
+  justify-content: center; /* centra horizontal */
+  align-items: center;     /* centra vertical */
+
 }
 
 /* Canvas */
-canvas {
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+canvas{
+ 
+  box-shadow: 0 20px 40px rgb(70, 42, 142);
+ background: rgba(3, 9, 48, 0.485); /* más transparente */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* compatibilidad */
 }
