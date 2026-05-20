@@ -7,7 +7,7 @@
                 "cols": 3,
                 "rows": 3
             },
-            "perfectMoves": 1,
+            "perfectMoves": 2,
             "boardPattern": [
                 null, null, null,
                 null, null, null,
@@ -17,9 +17,9 @@
                 {
                     "name": "red",
                     "pattern": [
-                        "R", null, null,
-                        "R", null, "R",
-                        "R", null, null
+                        null, "R", "R",
+                        null, "R", null,
+                        null, null, "R"
                     ]
                 },
                 {
@@ -41,9 +41,9 @@
                 {
                     "name": "yellow",
                     "pattern": [
-                        null, "y", "y",
-                        null, null, null,
-                        null, "y", "y"
+                        "y", null, null,
+                        "y", null, "y",
+                        null, "y", null
                     ]
                 }
             ]
@@ -66,9 +66,9 @@
                 {
                     "name": "red",
                     "pattern": [
+                        null, null, null, "R",
+                        null, "R", "R", null,
                         null, null, null, null,
-                        null, "R", null, null,
-                        null, null, "R", "R",
                         null, null, "R", null
                     ]
                 },
@@ -84,19 +84,19 @@
                 {
                     "name": "blue",
                     "pattern": [
-                        null, "B", "B", null,
+                        "B", "B", null, null,
                         "B", null, null, null,
-                        "B", null, null, null,
-                        null, null, null, null
+                        null, null, null, null,
+                        "B", null, null, null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
-                        null, null, null, "y",
-                        null, null, "y", "y",
                         null, null, null, null,
-                        null, null, null, "y"
+                        null, null, null, "y",
+                        null, "y", "y", null,
+                        null, "y", null, null
                     ]
                 }
             ]
@@ -108,21 +108,21 @@
                 "cols": 4,
                 "rows": 4
             },
-            "perfectMoves": 3,
+            "perfectMoves": 2,
             "boardPattern": [
-                "G", null, null, null,
                 null, null, null, null,
                 null, null, null, null,
-                null, null, null, null
+                null, null, null, null,
+                null, "G", null, null
             ],
             "colors": [
                 {
                     "name": "red",
                     "pattern": [
                         null, null, null, null,
-                        null, null, null, null,
-                        null, null, null, "R",
-                        "R", null, "R", "R"
+                        null, "R", null, null,
+                        "R", "R", null, "R",
+                        null, null, null, null
                     ]
                 },
                 {
@@ -137,19 +137,19 @@
                 {
                     "name": "blue",
                     "pattern": [
+                        "B", "B", null, "B",
+                        "B", null, null, null,
                         null, null, null, null,
-                        null, null, null, "B",
-                        "B", null, "B", null,
-                        null, "B", null, null
+                        null, null, null, null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
+                        null, null, null, null,
                         null, null, "Y", "Y",
-                        null, null, "Y", null,
-                        null, "Y", null, null,
-                        null, null, null, null
+                        null, null, null, null,
+                        null, null, "Y", "Y"
                     ]
                 }
             ]
@@ -164,18 +164,18 @@
             "perfectMoves": 3,
             "boardPattern": [
                 null, null, null, null,
-                "G", null, "G", null,
+                "G", null, null, null,
                 null, null, null, null,
-                null, null, null, null
+                null, "G", null, null
             ],
             "colors": [
                 {
                     "name": "red",
                     "pattern": [
+                        "R", "R", null, "R",
                         null, null, null, null,
-                        null, null, null, null,
-                        "R", null, "R", null,
-                        "R", null, "R", null
+                        null, null, "R", null,
+                        null, null, null, null
                     ]
                 },
                 {
@@ -190,18 +190,18 @@
                 {
                     "name": "blue",
                     "pattern": [
-                        "B", null, "B", "B",
-                        null, "B", null, null,
                         null, null, null, null,
-                        null, null, null, null
+                        null, "B", null, null,
+                        null, "B", null, null,
+                        "B", null, "B", null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
-                        null, null, null, null,
+                        null, null, "Y", null,
+                        null, null, "Y", null,
                         null, null, null, "Y",
-                        null, "Y", null, "Y",
                         null, null, null, "Y"
                     ]
                 }
@@ -216,19 +216,19 @@
             },
             "perfectMoves": 3,
             "boardPattern": [
+                "G", null, null, null,
                 null, null, null, null,
-                null, null, null, null,
-                null, null, null, null,
+                null, "G", null, null,
                 null, null, null, null
             ],
             "colors": [
                 {
                     "name": "red",
                     "pattern": [
-                        null, null, "R", null,
-                        null, null, "R", null,
-                        "R", "R", null, null,
-                        null, null, null, null
+                        null, null, "R", "R",
+                        null, null, null, null,
+                        null, null, null, "R",
+                        null, null, null, "R"
                     ]
                 },
                 {
@@ -243,19 +243,19 @@
                 {
                     "name": "blue",
                     "pattern": [
-                        "B", null, null, null,
-                        "B", "B", null, null,
-                        null, null, null, null,
-                        "B", null, null, null
+                        null, "B", null, null,
+                        null, "B", null, "B",
+                        null, null, "B", null,
+                        null, null, null, null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
-                        null, null, null, "Y",
-                        null, null, null, "Y",
-                        null, null, "Y", null,
-                        null, null, null, "Y"
+                        null, null, null, null,
+                        "Y", null, null, null,
+                        "Y", null, null, null,
+                        "Y", null, "Y", null
                     ]
                 }
             ]
@@ -267,31 +267,31 @@
                 "cols": 5,
                 "rows": 5
             },
-            "perfectMoves": 3,
+            "perfectMoves": 4,
             "boardPattern": [
+                "G", "G", null, null, null,
                 null, null, null, null, null,
-                null, "G", null, null, null,
-                "G", null, null, null, null,
                 null, null, null, null, null,
-                null, "G", null, null, null
+                null, null, null, null, null,
+                null, null, null, "G", null
             ],
             "colors": [
                 {
                     "name": "red",
                     "pattern": [
                     null, null, null, null, null,
+                    null, null, null, null, "R",
                     null, null, "R", null, null,
-                    null, "R", null, null, null,
-                    "R", null, null, null, null,
-                    "R", null, null, null, null
+                    "R", null, null, "R", null,
+                    null, null, null, null, null
                     ]
                 },
                 {
                     "name": "green",
                     "pattern": [
-                    null, "O", null, "O", "O",
-                    "O", null, null, null, null,
-                    null, null, null, null, null,
+                    null, null, "O", null, null,
+                    "O", "O", null, null, null,
+                    null, "O", null, null, null,
                     null, null, null, null, null,
                     null, null, null, null, null
                     ]
@@ -301,19 +301,19 @@
                     "pattern": [
                     null, null, null, null, null,
                     null, null, null, null, null,
-                    null, null, null, "B", "B",
+                    null, null, null, null, "B",
                     null, null, "B", null, null,
-                    null, null, null, null, "B"
+                    "B", "B", null, null, null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
                     null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, "Y", null, null,
-                    null, null, null, "Y", "Y",
-                    null, null, null, "Y", null
+                    null, null, "Y", "Y", null,
+                    "Y", null, null, null, null,
+                    null, "Y", null, null, null,
+                    null, null, null, null, null
                     ]
                 }
             ]
@@ -325,21 +325,21 @@
                 "cols": 5,
                 "rows": 5
             },
-            "perfectMoves": 3,
+            "perfectMoves": 5,
             "boardPattern": [
+                null, null, null, "G", null,
                 null, null, null, null, null,
-                "G", null, null, "G", null,
                 null, null, null, null, null,
-                null, null, null, null, null,
-                null, null, null, "G", null
+                "G", null, null, null, null,
+                null, "G", null, null, null
             ],
             "colors": [
                 {
                     "name": "red",
                     "pattern": [
-                    "R", null, null, null, null,
-                    null, "R", null, null, null,
-                    "R", "R", null, null, null,
+                    null, "R", "R", null, null,
+                    null, null, null, "R", null,
+                    null, null, null, null, "R",
                     null, null, null, null, null,
                     null, null, null, null, null
                     ]
@@ -349,29 +349,29 @@
                     "pattern": [
                     null, null, null, null, null,
                     null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, "O", null,
-                    "O", "O", "O", null, null
+                    null, "O", null, null, null,
+                    null, "O", null, null, null,
+                    null, null, "O", "O", null
                     ]
                 },
                 {
                     "name": "blue",
                     "pattern": [
+                    null, null, null, null, null,
+                    "B", "B", null, null, null,
+                    "B", null, null, null, null,
                     null, null, "B", null, null,
-                    null, null, "B", null, null,
-                    null, null, "B", null, null,
-                    null, "B", null, null, null,
                     null, null, null, null, null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
+                    "Y", null, null, null, null,
                     null, null, null, null, null,
-                    null, null, null, null, "Y",
+                    null, null, "Y", null, null,
                     null, null, null, "Y", "Y",
-                    null, null, null, null, null,
-                    null, null, null, null, "Y"
+                    null, null, null, null, null
                     ]
                 }
             ]
@@ -380,56 +380,61 @@
             "id": 8,
             "name": "Nivel 8",
             "mapSize": {
-                "cols": 5,
-                "rows": 5
+                "cols": 6,
+                "rows": 6
             },
             "perfectMoves": 3,
             "boardPattern": [
-                null, null, null, null, null,
-                null, null, null, null, null,
-                null, null, null, null, null,
-                null, null, null, null, null,
-                null, null, null, null, null
+                null, null, null, null, null, null,
+                null, null, null, null, null, null,
+                null, null, null, null, null, null,
+                null, null, null, null, null, null,
+                null, null, null, null, null, null,
+                null, null, null, null, null, null
             ],
             "colors": [
                 {
                     "name": "red",
                     "pattern": [
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null
                     ]
                 },
                 {
                     "name": "green",
                     "pattern": [
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null
                     ]
                 },
                 {
                     "name": "blue",
                     "pattern": [
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null
                     ]
                 },
                 {
                     "name": "yellow",
                     "pattern": [
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null
                     ]
                 }
             ]

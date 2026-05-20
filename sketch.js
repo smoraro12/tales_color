@@ -78,9 +78,27 @@
       btnPlay = new Button(width/2 - 75, height/2, 150, 50, "Jugar", () => {
       gameState = "playing";
     });
-      btnReset = new Button(0, 0, 120, 37, "Inicio", () => { // el bot
+      /*btnReset = new Button(0, 0, 120, 37, "Inicio", () => { // el bot
       gameState = "menu";
-    });
+    });*/
+    
+  btnReset = new Button(0, 0, 140, 45, "Inicio", () => {
+
+  // Reiniciar variables
+  attempts = 5;
+  currentLevel = 1;
+  attemptsLevel = 0;
+
+  timeline = [];
+  waiting = false;
+  changed = false;
+
+  // Volver a cargar nivel 1
+  loadLevel(currentLevel);
+
+  // Volver al menú
+  gameState = "menu";
+});
   }
 
   function setup() {
@@ -164,7 +182,7 @@
     let dateX = width / 2;
     let dateY = 200;
     
-    fill(49, 0, 166, 150); // blanco transparente
+    fill(49, 0, 166, 150); // morado palido transparente
     noStroke();
 
     textSize(20);
@@ -178,7 +196,7 @@
       textw + paddingx,
       35,30); // bordes redondeados
     
-    fill(255); // texto en negro
+    fill(255); // texto en blanco
     textAlign(CENTER, CENTER);
     text(today, dateX, dateY);
 
@@ -191,19 +209,25 @@
     let offsetX = (width - gridWidth) / 2; // Cálculo del margen horizontal para centrar el tablero en la pantalla
     let offsetY = topSpace + (height - topSpace - gridHeight) / 2; // Cálculo del margen vertical para centrar el tablero en la pantalla considerando el espacio reservado para el título y la fecha
 
-
-    //////////////////////////////////////////////
+        textAlign(CENTER);
+    fill('#e2daf0');
+    textSize(20);
+    textStyle(BOLD);
+    text("Nivel actual:                                           " + currentLevel, width/2, 722);
+    /*
     drawQuadrille(game, { x: offsetX, y: offsetY, outlineWeight: 0.5 }); // dibujo de quadrille de juego
 
     for (let c of colors) { // Dibujo de cada quadrille que contiene piezas de color
       drawQuadrille(c, { x: offsetX, y: offsetY, outlineWeight: 0.5 });
-    }
+    }*/
+
+    drawBoard(offsetX, offsetY); // Función que dibuja el tablero, incluyendo el fondo general, los bloques inmóviles y las piezas de colores con efectos visuales para resaltar cada elemento en la pantalla de juego
 
     // condicional para mostrar el mensaje de movimientos restantes en singular o plural dependiendo de la cantidad de intentos restantes
     let textX = width / 2;
     let textY = offsetY + gridHeight + 40;
     push();
-    fill("#e2daf0");
+    fill("#cdbaef");
     textSize(16);
     textAlign(LEFT, BOTTOM);
     if (attempts === 1) {
@@ -215,13 +239,95 @@
     pop();
     btnReset.show();
 
-    // 👉 posición del botón debajo de los intentos
+    // posición del botón
     btnReset.x = width / 2 - btnReset.w / 2;
     btnReset.y = textY + 20;
 
     btnReset.show();
   }
+/*
+  Función para dibujar el tablero, incluyendo el fondo general, los bloques inmóviles y las piezas de colores 
+  con efectos visuales para resaltar cada elemento en la pantalla de juego
+ */
+  function drawBoard(offsetX, offsetY){
 
+  for(let row = 0; row < rows; row++){
+
+    for(let col = 0; col < cols; col++){
+
+      let x = offsetX + col * Quadrille.cellLength;
+      let y = offsetY + row * Quadrille.cellLength;
+
+      // fondo de la cuadrilla base
+
+      fill(180, 180, 180, 100);
+      stroke(0, 0, 0, 180);
+
+      rect(
+        x,
+        y,
+        Quadrille.cellLength,
+        Quadrille.cellLength,
+        10
+      );
+
+      // bloques inmoviles
+
+      if(game.read(row, col) === "G"){
+
+        drawingContext.shadowBlur = 15;
+        drawingContext.shadowColor = "rgb(0, 0, 0)";
+
+        fill(10, 10, 10);
+        stroke(40);
+
+        rect(
+          x + 4,
+          y + 4,
+          Quadrille.cellLength - 8,
+          Quadrille.cellLength - 8,
+          10
+        );
+
+        drawingContext.shadowBlur = 0;
+      }
+
+      // piezas de colores
+
+      for(let c of colors){
+
+        let cell = c.read(row, col);
+
+        if(cell !== null){
+
+          let r = red(cell);
+          let g = green(cell);
+          let b = blue(cell);
+
+          // Glow neon
+          drawingContext.shadowBlur = 20;
+          drawingContext.shadowColor = `rgb(${r}, ${g}, ${b})`;
+
+          // Borde neon
+          stroke(r, g, b);
+
+          // Color interior
+          fill(r, g, b, 180);
+
+          rect(
+            x + 4,
+            y + 4,
+            Quadrille.cellLength - 8,
+            Quadrille.cellLength - 8,
+            10
+          );
+
+          drawingContext.shadowBlur = 0;
+        }
+      }
+    }
+  }
+}
   // Definición de función para manejar eventos de teclado
   function keyPressed() {
     if (gameState !== "playing") return false; //  PAra que no se mueve si esta en menu
