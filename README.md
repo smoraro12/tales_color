@@ -137,7 +137,7 @@ Esto aumenta la flexibilidad del sistema y evita una experiencia demasiado rígi
 
 ---
 
-# 🧩 Uso de p5.quadrille
+#  Uso de p5.quadrille
 
 La librería **p5.quadrille** fue fundamental para representar y manipular el tablero del juego.
 
@@ -269,7 +269,7 @@ global_game = Quadrille.or(global_game, colors[i]);
 
 ---
 
-# Diseño visual
+#  Diseño visual
 
 Una vez finalizada la lógica principal, se realizaron ajustes visuales al juego.
 
@@ -412,7 +412,7 @@ Adaptación de controles táctiles para celulares.
 
 ---
 
-#  Uso de Inteligencia Artificial
+# 🤖 Uso de Inteligencia Artificial
 
 La IA fue utilizada como herramienta de apoyo durante el desarrollo.
 
@@ -502,7 +502,7 @@ Documentación:
 
 ---
 
-# ⚠️ Consideraciones académicas
+#  Consideraciones académicas
 
 Todas las fuentes externas utilizadas fueron reconocidas tanto en el informe como en los comentarios del código.
 
@@ -523,5 +523,7 @@ Asimismo, el enfoque de construir primero la lógica y después la parte visual 
 Finalmente, el proyecto deja abierta la posibilidad de evolucionar hacia un sistema de retos diarios y niveles generados proceduralmente, aumentando su potencial de rejugabilidad y expansión futura.
 
 ---
+
+
 
 Proyecto desarrollado con fines académicos como parte del proceso de aprendizaje del curso.
