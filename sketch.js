@@ -15,7 +15,7 @@
   let yellow_patron;
   let win_patron = [];
   let waiting = false
-  let attempts = 5;
+  let attempts = 3;
   let currentLevel = 1;
   let perfectAttempts = 0;
   let timeline = [];
@@ -151,6 +151,26 @@
               drawPlaying()
               break;
       }
+      if (attempts <= 0 && gameState === "playing") {
+        push();
+        fill(255,0,0, 220);
+        stroke(0);
+        textSize(40);
+        textAlign(CENTER, CENTER);
+        text("¡Has perdido!" + "\n" + "Intenta de nuevo.", width / 2, height / 2);
+        pop();
+        //noLoop(); // Detiene el ciclo de dibujo para mostrar el mensaje de pérdida
+      }
+            if (currentLevel == 8 && gameState === "playing") {
+        push();
+        fill(0,255,0, 220);
+        stroke(0);
+        textSize(40);
+        textAlign(CENTER, CENTER);
+        text("¡Has completado" + "\n" + "todos los niveles!", width / 2, height / 2);
+        pop();
+        //noLoop(); // Detiene el ciclo de dibujo para mostrar el mensaje de pérdida
+      }
   }
 
   function drawBackground(){
@@ -209,6 +229,7 @@
     let offsetX = (width - gridWidth) / 2; // Cálculo del margen horizontal para centrar el tablero en la pantalla
     let offsetY = topSpace + (height - topSpace - gridHeight) / 2; // Cálculo del margen vertical para centrar el tablero en la pantalla considerando el espacio reservado para el título y la fecha
 
+    //// muestra el nivel actual en la parte inferior de la pantalla
         textAlign(CENTER);
     fill('#e2daf0');
     textSize(20);
@@ -225,7 +246,7 @@
 
     // condicional para mostrar el mensaje de movimientos restantes en singular o plural dependiendo de la cantidad de intentos restantes
     let textX = width / 2;
-    let textY = offsetY + gridHeight + 40;
+    let textY = offsetY + gridHeight + 40;  
     push();
     fill("#cdbaef");
     textSize(16);
