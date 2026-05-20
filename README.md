@@ -331,7 +331,7 @@ Controla:
 
 ---
 
-# 📈 Resultados obtenidos
+#  Resultados obtenidos
 
 Durante el desarrollo se logró implementar exitosamente:
 
@@ -412,7 +412,7 @@ Adaptación de controles táctiles para celulares.
 
 ---
 
-# 🤖 Uso de Inteligencia Artificial
+#  Uso de Inteligencia Artificial
 
 La IA fue utilizada como herramienta de apoyo durante el desarrollo.
 
@@ -442,7 +442,7 @@ La reutilización de código solo fue considerada cuando se entendió completame
 
 ---
 
-# 📚 Referencias y APIs utilizadas
+#  Referencias y APIs utilizadas
 
 ## JavaScript
 
@@ -452,10 +452,6 @@ La reutilización de código solo fue considerada cuando se entendió completame
 - Eventos de teclado
 - Objetos y clases (`class Button`)
 - Manipulación de fechas (`Date()`)
-
-### Documentación oficial
-
-- https://developer.mozilla.org/
 
 ---
 
@@ -496,13 +492,9 @@ Funciones utilizadas:
 - `transpose()`
 - `Quadrille.or()`
 
-Documentación:
-
-- https://github.com/crisvo2024/p5.quadrille
-
 ---
 
-#  Consideraciones académicas
+# Consideraciones académicas
 
 Todas las fuentes externas utilizadas fueron reconocidas tanto en el informe como en los comentarios del código.
 
